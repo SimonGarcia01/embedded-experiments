@@ -1,9 +1,5 @@
 #include <iostream>
-
-int increase(int value)
-{
-    return value + 1;
-}
+#include "increase.h"
 
 int main()
 {
