@@ -1,11 +1,21 @@
 #include <iostream>
-#include "increase.h"
+
+void change(int* p)
+{
+    *p = 30;
+    p = nullptr;
+}
 
 int main()
 {
-    const int start{20};
-    int result{increase(start)};
+    int number{10};
+    int* pointer{&number};
 
-    std::cout << "Result: " << result << '\n';
+    change(pointer);
+
+    std::cout << "number: " << number << '\n';
+    std::cout << "pointer still points to number: "
+              << (pointer == &number) << '\n';
+
     return 0;
 }
