@@ -11,9 +11,9 @@
                 "-Wextra",
                 "-Wpedantic",
                 "-g",
-                "${workspaceFolder}/cpp/sum.cpp",
+                "${workspaceFolder}/cpp/vector.cpp",
                 "-o",
-                "${workspaceFolder}/cpp/sum.exe"
+                "${workspaceFolder}/cpp/vector.exe"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
