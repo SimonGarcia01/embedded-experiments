@@ -1,8 +1,8 @@
 #include <iostream>
 
 struct SensorReading {
-    int sensorId;
-    double voltage;
+    int sensorId{0};
+    double voltage{0.0};
 };
 
 void printReading(const SensorReading& reading) {
