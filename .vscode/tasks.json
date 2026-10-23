@@ -11,9 +11,9 @@
                 "-Wextra",
                 "-Wpedantic",
                 "-g",
-                "${workspaceFolder}/cpp/structs/struct.cpp",
+                "${workspaceFolder}/cpp/classes/class.cpp",
                 "-o",
-                "${workspaceFolder}/cpp/structs/struct.exe"
+                "${workspaceFolder}/cpp/classes/class.exe"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
