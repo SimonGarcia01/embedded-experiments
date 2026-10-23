@@ -5,15 +5,18 @@ struct SensorReading {
     double voltage;
 };
 
+void printReading(const SensorReading& reading) {
+    std::cout << "Sensor ID: " << reading.sensorId << '\n';
+    std::cout << "Voltage: " << reading.voltage << '\n';
+}
+
 int main() {
 
     SensorReading first{3, 2.75};
     SensorReading second = first;
 
-    std::cout << "First sensor ID: " << first.sensorId << '\n';
-    std::cout << "First sensor voltage: " << first.voltage << '\n';
-    std::cout << "Second sensor ID: " << second.sensorId << '\n';
-    std::cout << "Second sensor voltage: " << second.voltage << '\n';
+    printReading(first);
+    printReading(second);
 
     second.voltage = 1.5;
     std::cout << "First sensor voltage after change: " << first.voltage << '\n';
