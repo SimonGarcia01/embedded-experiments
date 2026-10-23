@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <span>
 
 class MeasurementBatch {
 private:
@@ -22,6 +23,10 @@ public:
     void clear() {
         readings.clear();
     }
+
+    std::span<const int> data() const {
+        return readings;
+    }
 };
 
 
@@ -37,6 +42,12 @@ int main() {
     }
 
     std::cout << "Total readings in batch: " << batch.size() << '\n';
+
+    std::cout << "Stored readings:\n";
+
+    for (int value : batch.data()) {
+        std::cout << value << '\n';
+    }
 
     batch.clear();
     std::cout << "Batch cleared. Total readings now: " << batch.size() << '\n';
