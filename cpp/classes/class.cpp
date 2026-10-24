@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <span>
+#include <utility>
 
 class MeasurementBatch {
 private:
@@ -29,28 +30,26 @@ public:
     }
 };
 
+//Added a helper function to consume the batch and print its size
+void consume(MeasurementBatch batch){
+    std::cout << "Parameter size: " << batch.size() << '\n';
+}
 
 int main() {
-    MeasurementBatch batch;
+    MeasurementBatch source;
+    source.add(10);
+    source.add(20);
 
-    for (int i = 0; i < 7; ++i) {
-        if (batch.add(i * 10)) {
-            std::cout << "Added reading: " << i * 10 << '\n';
-        } else {
-            std::cout << "Failed to add reading: " << i * 10 << " (batch full)\n";
-        }
-    }
+    consume(source);
+    std::cout << "After copy: " << source.size() << '\n';
 
-    std::cout << "Total readings in batch: " << batch.size() << '\n';
+    consume(std::move(source));
+    std::cout << "After move: " << source.size() << '\n';
 
-    std::cout << "Stored readings:\n";
+    consume(source);
+    std::cout << "After copy after it was moved: " << source.size() << '\n';
 
-    for (int value : batch.data()) {
-        std::cout << value << '\n';
-    }
-
-    batch.clear();
-    std::cout << "Batch cleared. Total readings now: " << batch.size() << '\n';
-
-    return 0;
+    source.clear();
+    source.add(7);
+    std::cout << "After reuse: " << source.size() << '\n';
 }
