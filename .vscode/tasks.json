@@ -11,9 +11,9 @@
                 "-Wextra",
                 "-Wpedantic",
                 "-g",
-                "${workspaceFolder}/cpp/unique_ptr/exercise.cpp",
+                "${workspaceFolder}/cpp/explicit/exercise.cpp",
                 "-o",
-                "${workspaceFolder}/cpp/unique_ptr/exercise.exe"
+                "${workspaceFolder}/cpp/explicit/exercise.exe"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
