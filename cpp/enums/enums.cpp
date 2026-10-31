@@ -1,5 +1,20 @@
 #include <iostream>
 
+//Enum to track the result of beginConnect()
+enum class BeginResult {
+    Started,
+    AlreadyConnecting,
+    AlreadyConnected
+};
+
+//Enum to track the result of CompleteConnect
+enum class CompleteResult {
+    Completed,
+    NotStarted,
+    AlreadyConnected
+};
+
+//Enum to track the state of the connection
 enum class ConnectionState {
     Disconnected,
     Connecting,
@@ -19,29 +34,52 @@ public:
     explicit operator bool() const {
         return state == ConnectionState::Connected;
     }
+    
+    //Function to see the current state of the connection
+    ConnectionState currentState() const {
+        return state;
+    }
 
     //Making state machine:
     //Start by alowing changing state from disconnected to connecting
     //Begin connect + disconnected = change to connecting + true
     //Begin connect + connected / connecting = false
-    bool beginConnect() {
-        if (state != ConnectionState::Disconnected)
-        {
-            return false;
+    //UPDATE:
+    //Now we use an enum to say more about the result of the operation
+    BeginResult beginConnect(){
+        switch (state){
+            case ConnectionState::Disconnected:
+                state = ConnectionState::Connecting;
+                return BeginResult::Started;
+
+            case ConnectionState::Connecting:
+                return BeginResult::AlreadyConnecting;
+
+            case ConnectionState::Connected:
+                return BeginResult::AlreadyConnected;
         }
 
-        state = ConnectionState::Connecting;
-        return true;
+        return BeginResult::AlreadyConnected;
     }
 
     //Allow the change from connecting to connected
     //complete connect + connecting = change to connected + true
     // complete connect + disconnected / connected = false
-    bool completeConnect(){
-        if(state != ConnectionState::Connecting) return false;
+    //UPDATE
+    //Now this gives more information on the result of the operation
+    CompleteResult completeConnect(){
+        switch (state){
+            case ConnectionState::Disconnected:
+                return CompleteResult::NotStarted;
 
-        state = ConnectionState::Connected;
-        return true;
+            case ConnectionState::Connecting:
+                return CompleteResult::Completed;
+
+            case ConnectionState::Connected:
+                return CompleteResult::AlreadyConnected;
+        }
+
+        return CompleteResult::AlreadyConnected;
     }
 
 };
@@ -49,7 +87,9 @@ public:
 int main() {
     Connection connection;
 
-    switch (connection) {
+    ConnectionState starting = connection.currentState();
+
+    switch (starting) {
         case ConnectionState::Disconnected:
             std::cout << "Disconnected\n";
             break;
