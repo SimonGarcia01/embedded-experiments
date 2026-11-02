@@ -11,9 +11,9 @@
                 "-Wextra",
                 "-Wpedantic",
                 "-g",
-                "${workspaceFolder}/cpp/enums/enums.cpp",
+                "${workspaceFolder}/cpp/noexcept/exercise.cpp",
                 "-o",
-                "${workspaceFolder}/cpp/enums/enums.exe"
+                "${workspaceFolder}/cpp/noexcept/exercise.exe"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
