@@ -73,6 +73,7 @@ public:
                 return CompleteResult::NotStarted;
 
             case ConnectionState::Connecting:
+                state = ConnectionState::Connected;
                 return CompleteResult::Completed;
 
             case ConnectionState::Connected:
