@@ -11,9 +11,9 @@
                 "-Wextra",
                 "-Wpedantic",
                 "-g",
-                "${workspaceFolder}/cpp/noexcept/exercise.cpp",
+                "${workspaceFolder}/cpp/general-exercises/vectors_uPTR_objects.cpp",
                 "-o",
-                "${workspaceFolder}/cpp/noexcept/exercise.exe"
+                "${workspaceFolder}/cpp/general-exercises/vectors_uPTR_objects.exe"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
