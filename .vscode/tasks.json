@@ -11,9 +11,9 @@
                 "-Wextra",
                 "-Wpedantic",
                 "-g",
-                "${workspaceFolder}/cpp/general-exercises/vectors_uPTR_objects.cpp",
+                "${workspaceFolder}/cpp/general-exercises/take_last.cpp",
                 "-o",
-                "${workspaceFolder}/cpp/general-exercises/vectors_uPTR_objects.exe"
+                "${workspaceFolder}/cpp/general-exercises/take_last.exe"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
