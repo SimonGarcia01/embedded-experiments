@@ -11,9 +11,9 @@
                 "-Wextra",
                 "-Wpedantic",
                 "-g",
-                "${workspaceFolder}/cpp/iterators/find_if_storable_lambdas.cpp",
+                "${workspaceFolder}/cpp/iterators/count_if.cpp",
                 "-o",
-                "${workspaceFolder}/cpp/iterators/find_if_storable_lambdas.exe"
+                "${workspaceFolder}/cpp/iterators/count_if.exe"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
