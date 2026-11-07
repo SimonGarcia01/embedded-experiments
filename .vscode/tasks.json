@@ -11,9 +11,9 @@
                 "-Wextra",
                 "-Wpedantic",
                 "-g",
-                "${workspaceFolder}/cpp/iterators/iterators.cpp",
+                "${workspaceFolder}/cpp/iterators/find_if.cpp",
                 "-o",
-                "${workspaceFolder}/cpp/iterators/iterators.exe"
+                "${workspaceFolder}/cpp/iterators/find_if.exe"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
