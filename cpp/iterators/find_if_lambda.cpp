@@ -8,12 +8,14 @@ int main () {
     std::vector<int>::iterator begin = readings.begin();
     std::vector<int>::iterator end = readings.end();
 
-    std::vector<int>::iterator found = std::find_if(
-        begin, 
-        end, 
-        [] (int reading) {
-            return reading > 10 && (reading % 2 != 0);
-        });
+    int limit{10};
+
+    auto isOddAboveLimit = [limit](int reading) {
+        return reading > limit && reading % 2 != 0;
+    };
+
+    
+    std::vector<int>::iterator found = std::find_if(begin, end, isOddAboveLimit);
 
     if(found != end){
         std::cout << *found << '\n';
