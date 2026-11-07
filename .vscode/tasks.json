@@ -11,9 +11,9 @@
                 "-Wextra",
                 "-Wpedantic",
                 "-g",
-                "${workspaceFolder}/cpp/general-exercises/take_last.cpp",
+                "${workspaceFolder}/cpp/iterators/iterators.cpp",
                 "-o",
-                "${workspaceFolder}/cpp/general-exercises/take_last.exe"
+                "${workspaceFolder}/cpp/iterators/iterators.exe"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
