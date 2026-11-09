@@ -11,9 +11,9 @@
                 "-Wextra",
                 "-Wpedantic",
                 "-g",
-                "${workspaceFolder}/cpp/comparators/lambda_sort.cpp",
+                "${workspaceFolder}/cpp/transform/std_transform.cpp",
                 "-o",
-                "${workspaceFolder}/cpp/comparators/lambda_sort.exe"
+                "${workspaceFolder}/cpp/transform/std_transform.exe"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
