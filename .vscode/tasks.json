@@ -11,9 +11,9 @@
                 "-Wextra",
                 "-Wpedantic",
                 "-g",
-                "${workspaceFolder}/cpp/iterators/count_if.cpp",
+                "${workspaceFolder}/cpp/comparators/lambda_sort.cpp",
                 "-o",
-                "${workspaceFolder}/cpp/iterators/count_if.exe"
+                "${workspaceFolder}/cpp/comparators/lambda_sort.exe"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
