@@ -11,9 +11,9 @@
                 "-Wextra",
                 "-Wpedantic",
                 "-g",
-                "${workspaceFolder}/cpp/transform/std_transform.cpp",
+                "${workspaceFolder}/cpp/iterators/count_if/count_if.cpp",
                 "-o",
-                "${workspaceFolder}/cpp/transform/std_transform.exe"
+                "${workspaceFolder}/cpp/iterators/count_if/count_if.exe"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
