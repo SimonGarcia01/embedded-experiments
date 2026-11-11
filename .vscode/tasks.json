@@ -11,9 +11,9 @@
                 "-Wextra",
                 "-Wpedantic",
                 "-g",
-                "${workspaceFolder}/cpp/iterators/count_if/count_if.cpp",
+                "${workspaceFolder}/cpp/iterators/erase_if/erase_if.cpp",
                 "-o",
-                "${workspaceFolder}/cpp/iterators/count_if/count_if.exe"
+                "${workspaceFolder}/cpp/iterators/erase_if/erase_if.exe"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
