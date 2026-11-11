@@ -2,36 +2,21 @@
 #include <vector>
 #include <algorithm>
 
-struct SensorReading{
-    int sensorId{0};
-    double voltage{0.0};
-
-    void print() const
-    {
-        std::cout << "Sensor ID: " << sensorId << '\n';
-        std::cout << "Voltage: " << voltage << '\n';
-    }
-};
-
 int main() {
-    std::vector<SensorReading> readings{
-        {3, 3.10},
-        {7, 2.75},
-        {2, 2.75}
+    int low{10};
+    int high{50};
+
+    auto countOutsideRange = [low, high] (int reading) {
+        return reading < low || reading > high;
     };
 
-    std::vector<SensorReading> selected;
+    std::vector<int> readings{10, 25, 50, 5, 60};
 
-    std::vector<SensorReading>::const_iterator begin = readings.cbegin();
-    std::vector<SensorReading>::const_iterator end = readings.cend();
+    std::vector<int>::iterator begin = readings.begin();
+    std::vector<int>::iterator end = readings.end();
 
-    std::copy_if(begin, end, std::back_inserter(selected), [](const SensorReading& reading){
-        return reading.voltage < 3.0;
-    });
-
-    for(SensorReading reading : selected) {
-        reading.print();
-    }
-
+    auto found = std::count_if(begin, end, countOutsideRange);
+    
+    std::cout << found << '\n';
 
 }
