@@ -11,9 +11,9 @@
                 "-Wextra",
                 "-Wpedantic",
                 "-g",
-                "${workspaceFolder}/cpp/iterators/accumulate/accumulate_optional.cpp",
+                "${workspaceFolder}/cpp/templates/optional_average/optional_average.cpp",
                 "-o",
-                "${workspaceFolder}/cpp/iterators/accumulate/accumulate_optional.exe"
+                "${workspaceFolder}/cpp/templates/optional_average/optional_average.exe"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
