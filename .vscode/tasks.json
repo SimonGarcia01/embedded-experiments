@@ -11,9 +11,9 @@
                 "-Wextra",
                 "-Wpedantic",
                 "-g",
-                "${workspaceFolder}/cpp/templates/optional_average/optional_average.cpp",
+                "${workspaceFolder}/cpp/ostream/ostream_overwrite.cpp",
                 "-o",
-                "${workspaceFolder}/cpp/templates/optional_average/optional_average.exe"
+                "${workspaceFolder}/cpp/ostream/ostream_overwrite.exe"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
