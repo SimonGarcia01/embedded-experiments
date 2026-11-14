@@ -11,9 +11,9 @@
                 "-Wextra",
                 "-Wpedantic",
                 "-g",
-                "${workspaceFolder}/cpp/ostream/ostream_overwrite.cpp",
+                "${workspaceFolder}/cpp/templates/concepts/concept.cpp",
                 "-o",
-                "${workspaceFolder}/cpp/ostream/ostream_overwrite.exe"
+                "${workspaceFolder}/cpp/templates/concepts/concept.exe"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
