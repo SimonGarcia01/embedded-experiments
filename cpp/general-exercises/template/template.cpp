@@ -14,7 +14,7 @@ struct FixedBatch {
     // Member variable to hold readings
     std::array<T, N> readings{};
 
-    double average() const {
+    constexpr double average() const {
 
         double sum{0.0};
         
@@ -36,4 +36,8 @@ int main() {
     raw.readings[0] = 4;
     std::cout << "Raw average: " << raw.average() << '\n';
 
+    //Separate test with constexpr average so everything happens in compile time
+    constexpr FixedBatch<int, 3> known{{1, 2, 3}};
+    static_assert(known.average() == 2.0);
+    
 };
