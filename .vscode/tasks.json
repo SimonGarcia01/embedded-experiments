@@ -11,9 +11,9 @@
                 "-Wextra",
                 "-Wpedantic",
                 "-g",
-                "${workspaceFolder}/cpp/constexpr/constexpr.cpp",
+                "${workspaceFolder}/cpp/general-exercises/template/template.cpp",
                 "-o",
-                "${workspaceFolder}/cpp/constexpr/constexpr.exe"
+                "${workspaceFolder}/cpp/general-exercises/template/template.exe"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
