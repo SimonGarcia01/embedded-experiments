@@ -11,9 +11,9 @@
                 "-Wextra",
                 "-Wpedantic",
                 "-g",
-                "${workspaceFolder}/cpp/strings/ostringstream/ostringstream.cpp",
+                "${workspaceFolder}/cpp/strings/stream_manipulators/example.cpp",
                 "-o",
-                "${workspaceFolder}/cpp/strings/ostringstream/ostringstream.exe"
+                "${workspaceFolder}/cpp/strings/stream_manipulators/example.exe"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
