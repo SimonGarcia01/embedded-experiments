@@ -48,7 +48,7 @@ std::optional<SensorReading> strictParseReading(const std::string& text) {
     }
 
     //Check if there is any trailing junk after the voltage value
-    //This consumes a single whitespace character
+    //This consumes all white space characters after the voltage value, so that the stream is at the end of the file.
     input >> std::ws;
 
     //Check if the stream is at the end of the file, if not return nullopt
@@ -74,18 +74,17 @@ int main() {
     std::optional<SensorReading> result = parseReading(text);
     std::optional<SensorReading> strictResult = strictParseReading(text);
 
-    if(result) {
-        nonStrictReading = *result;
-    } else {
-        std::cout << "Invalid reading\n";
+    if (result) {
+        std::cout << "Non-strict: " << formatReading(*result) << '\n';
+    } 
+    else {
+        std::cout << "Non-strict: Invalid reading\n";
     }
 
-    if(strictResult) {
-        strictReading = *strictResult; 
-    } else {
-        std::cout << "Invalid reading\n";
+    if (strictResult) {
+        std::cout << "Strict: " << formatReading(*strictResult) << '\n';
+    } 
+    else {
+        std::cout << "Strict: Invalid reading\n";
     }
-
-    std::cout << "Non Strict: " << formatReading(nonStrictReading) << '\n';
-    std::cout << "Strict: " << formatReading(strictReading) << '\n';
 };
