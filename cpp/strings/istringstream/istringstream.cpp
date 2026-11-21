@@ -59,6 +59,12 @@ std::optional<SensorReading> strictParseReading(const std::string& text) {
     return SensorReading{id, voltage};
 };
 
+std::string formatReading(const SensorReading& reading) {
+    std::ostringstream out;
+    out << "Sensor " << reading.sensorId << ": " << reading.voltage << " V";
+    return out.str();
+};
+
 int main() {
     SensorReading nonStrictReading;
     SensorReading strictReading;
@@ -70,12 +76,16 @@ int main() {
 
     if(result) {
         nonStrictReading = *result;
+    } else {
+        std::cout << "Invalid reading\n";
     }
 
     if(strictResult) {
-        strictReading = *strictResult;
+        strictReading = *strictResult; 
+    } else {
+        std::cout << "Invalid reading\n";
     }
 
-    std::cout << "Non Strict: Sensor " << nonStrictReading.sensorId << ": " << nonStrictReading.voltage << " V" << '\n';
-    std::cout << "Strict: Sensor " << strictReading.sensorId << ": " << strictReading.voltage << " V" << '\n';
+    std::cout << "Non Strict: " << formatReading(nonStrictReading) << '\n';
+    std::cout << "Strict: " << formatReading(strictReading) << '\n';
 };
