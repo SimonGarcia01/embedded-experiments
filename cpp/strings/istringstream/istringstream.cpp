@@ -30,16 +30,52 @@ std::optional<SensorReading> parseReading(const std::string& text) {
     return SensorReading{id, voltage};
 };
 
+std::optional<SensorReading> strictParseReading(const std::string& text) {
+    std::istringstream input{text};
+    
+    int id{0};
+    char separator{};
+    double voltage{0.0};
+
+    //Normal parse of int Id, separator and double voltage check
+    if (!(input >> id >> separator >> voltage)) {
+        return std::nullopt;
+    }
+
+    //Check if the separator is a comma
+    if (separator != ',') {
+        return std::nullopt;
+    }
+
+    //Check if there is any trailing junk after the voltage value
+    //This consumes a single whitespace character
+    input >> std::ws;
+
+    //Check if the stream is at the end of the file, if not return nullopt
+    if (!input.eof()) {
+        return std::nullopt;
+    }
+
+    return SensorReading{id, voltage};
+};
+
 int main() {
-    SensorReading reading;
+    SensorReading nonStrictReading;
+    SensorReading strictReading;
 
     std::string text{"7,3.10junk"};
 
     std::optional<SensorReading> result = parseReading(text);
+    std::optional<SensorReading> strictResult = strictParseReading(text);
 
     if(result) {
-        reading = *result;
+        nonStrictReading = *result;
     }
 
-    std::cout << "Sensor " << reading.sensorId << ": " << reading.voltage << " V";
+    if(strictResult) {
+        strictReading = *strictResult;
+    }
+
+    std::cout << "Non Strict: Sensor " << nonStrictReading.sensorId << ": " << nonStrictReading.voltage << " V" << '\n';
+    std::cout << "Strict: Sensor " << strictReading.sensorId << ": " << strictReading.voltage << " V" << '\n';
 };
