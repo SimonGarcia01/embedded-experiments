@@ -11,9 +11,9 @@
                 "-Wextra",
                 "-Wpedantic",
                 "-g",
-                "${workspaceFolder}/cpp/streams/files/files.cpp",
+                "${workspaceFolder}/cpp/general-exercises/get_line_vectors/get_line_vectors.cpp",
                 "-o",
-                "${workspaceFolder}/cpp/streams/files/files.exe"
+                "${workspaceFolder}/cpp/general-exercises/get_line_vectors/get_line_vectors.exe"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
