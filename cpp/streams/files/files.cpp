@@ -38,15 +38,16 @@ std::optional<SensorReading> strictParseReading(const std::string& text) {
     return SensorReading{id, voltage};
 };
 
-void displayReadings(std::istream& input) {
+//Here we make it a generic function that can take any input stream and output stream
+void displayReadings(std::istream& input, std::ostream& output) {
     std::string line;
 
     while (std::getline(input, line)) {
         if (auto reading = strictParseReading(line)) {
-            std::cout << formatReading(*reading) << '\n';
+            output << formatReading(*reading) << '\n';
         }
         else {
-            std::cout << "Invalid reading\n";
+            output << "Invalid reading\n";
         }
     }
 }
@@ -59,5 +60,24 @@ int main() {
         return 1;
     }
 
-    displayReadings(file);
+    displayReadings(file, std::cout);
+
+    //we have to refresh the file stream to read it again, so we close and reopen it
+    //If we don't do that, the file stream will be at the end of the file and we won't be able to read it again
+    file.close();
+
+    file.open("cpp/streams/files/readings.txt");
+
+    //the same can be achieved by cleaing the stream state and seeking the beginning of the file
+    //file.clear();
+    //file.seekg(0, std::ios::beg);
+
+    std::ofstream report{"cpp/streams/files/report.txt"};
+
+    if (!report) {
+        std::cout << "Could not open report.txt\n";
+        return 1;
+    }
+
+    displayReadings(file, report);
 }
