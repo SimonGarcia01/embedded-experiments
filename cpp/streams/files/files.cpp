@@ -41,14 +41,11 @@ std::optional<SensorReading> strictParseReading(const std::string& text) {
 void displayReadings(std::istream& input) {
     std::string line;
 
-    while (std::getline(input, line))
-    {
-        if (auto reading = strictParseReading(line))
-        {
+    while (std::getline(input, line)) {
+        if (auto reading = strictParseReading(line)) {
             std::cout << formatReading(*reading) << '\n';
         }
-        else
-        {
+        else {
             std::cout << "Invalid reading\n";
         }
     }
