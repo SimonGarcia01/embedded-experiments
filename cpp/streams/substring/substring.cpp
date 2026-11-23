@@ -1,6 +1,18 @@
 #include <optional>
 #include <iostream>
 #include <string>
+#include <string_view>
+
+std::string_view trimSpaces(std::string_view text) {
+    const auto first = text.find_first_not_of(' ');
+
+    if (first == std::string_view::npos) {
+        return {};
+    }
+
+    const auto last = text.find_last_not_of(' ');
+    return text.substr(first, last - first + 1);
+}
 
 std::optional<std::string> valueAfterEquals(const std::string& text){
 
@@ -10,7 +22,9 @@ std::optional<std::string> valueAfterEquals(const std::string& text){
         return std::nullopt;
     }
 
-    return text.substr(pos + 1);
+    std::string_view trimmedTextAfterEquals = trimSpaces(text.substr(pos + 1));
+
+    return std::string(trimmedTextAfterEquals);
 };
 
 int main() {
