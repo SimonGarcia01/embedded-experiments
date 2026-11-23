@@ -2,6 +2,8 @@
 #include <iostream>
 #include <string>
 #include <string_view>
+#include <vector>
+#include <sstream>
 
 std::string_view trimSpaces(std::string_view text) {
     const auto first = text.find_first_not_of(' ');
@@ -57,6 +59,19 @@ std::optional<Setting> parseSetting(std::string_view line){
     return Setting{std::string{keyView}, std::string{valueView}};
 };
 
+std::vector<Setting> readSettings(std::istream& input){
+    std::vector<Setting> settings;
+    std::string line;
+
+    while(std::getline(input, line)){
+        if(auto setting = parseSetting(line)){
+            settings.push_back(*setting);
+        }
+    }
+
+    return settings;
+};
+
 int main() {
     std::string text = "key=value";
     std::optional<std::string> value = valueAfterEquals(text);
@@ -89,4 +104,12 @@ int main() {
     } else {
         std::cout << "Invalid setting format." << std::endl;
     }
+
+    std::istringstream input{"key1=value1\nkey2=value2\ninvalid_line\nkey3=value3"};
+
+    std::vector<Setting> settings = readSettings(input);
+
+    for (const auto& s : settings) {
+        std::cout << "Key: " << s.key << ", Value: "<< s.value << std::endl;
+    };
 };
