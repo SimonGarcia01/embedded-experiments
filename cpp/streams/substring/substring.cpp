@@ -33,6 +33,30 @@ std::optional<std::string> valueAfterEquals(const std::string& text){
     return std::string{trimmed};
 };
 
+//Now we are going to parse both the key and the value from a string in the format "key=value"
+struct Setting {
+    std::string key;
+    std::string value;
+};
+
+std::optional<Setting> parseSetting(std::string_view line){
+    size_t pos = line.find('=');
+
+    if(pos == std::string_view::npos){
+        return std::nullopt;
+    }
+
+    std::string_view keyView = trimSpaces(line.substr(0, pos));
+
+    if(keyView.empty()){
+        return std::nullopt;
+    }
+
+    std::string_view valueView = trimSpaces(line.substr(pos + 1));
+
+    return Setting{std::string{keyView}, std::string{valueView}};
+};
+
 int main() {
     std::string text = "key=value";
     std::optional<std::string> value = valueAfterEquals(text);
@@ -56,5 +80,13 @@ int main() {
         std::cout << "Value after '=': " << *value3 << std::endl;
     } else {
         std::cout << "No '=' found in the string." << std::endl;
+    }
+
+    std::string text4 = "key = value";
+    std::optional<Setting> setting = parseSetting(text4);
+    if (setting) {
+        std::cout << "Key: " << setting->key << ", Value: " << setting->value << std::endl;
+    } else {
+        std::cout << "Invalid setting format." << std::endl;
     }
 };
