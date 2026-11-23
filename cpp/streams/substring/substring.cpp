@@ -4,6 +4,7 @@
 #include <string_view>
 #include <vector>
 #include <sstream>
+#include <utility>
 
 std::string_view trimSpaces(std::string_view text) {
     const auto first = text.find_first_not_of(' ');
@@ -65,10 +66,12 @@ std::vector<Setting> readSettings(std::istream& input){
 
     while(std::getline(input, line)){
         if(auto setting = parseSetting(line)){
-            settings.push_back(*setting);
+            //Here we use std::move to move the Setting object into the vector
+            //Doing .push_back(*setting) could also work, but it would make a copy of the setting object
+            settings.push_back(std::move(*setting)); 
         }
     }
-
+ 
     return settings;
 };
 
