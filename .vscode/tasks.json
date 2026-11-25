@@ -11,9 +11,9 @@
                 "-Wextra",
                 "-Wpedantic",
                 "-g",
-                "${workspaceFolder}/cpp/streams/substring/substring.cpp",
+                "${workspaceFolder}/cpp/general-exercises/reverse_lookup/reverse_lookup.cpp",
                 "-o",
-                "${workspaceFolder}/cpp/streams/substring/substring.exe"
+                "${workspaceFolder}/cpp/general-exercises/reverse_lookup/reverse_lookup.exe"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
