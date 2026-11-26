@@ -11,9 +11,9 @@
                 "-Wextra",
                 "-Wpedantic",
                 "-g",
-                "${workspaceFolder}/cpp/general-exercises/reverse_lookup/reverse_lookup.cpp",
+                "${workspaceFolder}/cpp/containers/unordered_map/unordered_map.cpp",
                 "-o",
-                "${workspaceFolder}/cpp/general-exercises/reverse_lookup/reverse_lookup.exe"
+                "${workspaceFolder}/cpp/containers/unordered_map/unordered_map.exe"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
