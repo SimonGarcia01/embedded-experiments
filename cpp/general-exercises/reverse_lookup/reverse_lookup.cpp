@@ -9,7 +9,7 @@ struct Setting {
     std::string value;
 };
 
- std::optional<std::string> findSetting(const std::vector<Setting>& settings, std::string_view key){
+std::optional<std::string> findSetting(const std::vector<Setting>& settings, std::string_view key){
 
     std::vector<Setting>::const_reverse_iterator reverseBegin = settings.rbegin();
     
@@ -26,9 +26,9 @@ struct Setting {
     }
 
     return std::make_optional(found->value);
- };
+};
 
- int main() {
+int main() {
     std::vector<Setting> settings = {
         {"key1", "value1"},
         {"key2", "value2"},
@@ -40,4 +40,4 @@ struct Setting {
     if (value) {
         std::cout << "Value for 'key1': " << *value;
     }
- };
+};
