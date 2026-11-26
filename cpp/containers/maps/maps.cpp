@@ -1,4 +1,5 @@
 #include <unordered_map>
+#include <map>
 #include <string>
 #include <vector>
 #include <iostream>
@@ -9,8 +10,18 @@ struct Setting {
     std::string value;
 };
 
-std::unordered_map<std::string, std::string> indexSettings(const std::vector<Setting>& settings){
+std::unordered_map<std::string, std::string> unorderedIndexSettings(const std::vector<Setting>& settings){
     std::unordered_map<std::string, std::string> settingsMap;
+
+    for(const Setting& setting : settings){
+        settingsMap.insert_or_assign(setting.key, setting.value);
+    }
+
+    return settingsMap;
+};
+
+std::map<std::string, std::string> orderedIndexSettings(const std::vector<Setting>& settings){
+    std::map<std::string, std::string> settingsMap;
 
     for(const Setting& setting : settings){
         settingsMap.insert_or_assign(setting.key, setting.value);
@@ -34,18 +45,24 @@ std::optional<std::string> findSetting(const std::unordered_map<std::string, std
 
 int main() {
     std::vector<Setting> settings = {
-        {"key1", "value1"},
-        {"key2", "value2"},
-        {"key3", "value3"}
+        {"voltage", "3.10"},
+        {"gain", "2"},
+        {"label", "kitchen"},
+        {"voltage", "2.75"}
     };
 
-    std::unordered_map<std::string, std::string> settingsMap = indexSettings(settings);
+    std::unordered_map<std::string, std::string> unorderedSettingsMap = unorderedIndexSettings(settings);
+    std::map<std::string, std::string> orderedSettingsMap = orderedIndexSettings(settings);
 
     //This loop can be written shorter using structured bindings
     //for (const auto& [key, value] : settingsMap) {}
     //this gives us access to the key and value directly without having to use pair.first and pair.second
-    for (const std::pair<const std::string, std::string>& pair : settingsMap) {
-        std::cout << "Key: " << pair.first << ", Value: " << pair.second << '\n';
+    for (const std::pair<const std::string, std::string>& pair : unorderedSettingsMap) {
+        std::cout << "[Unordered] Key: " << pair.first << ", Value: " << pair.second << '\n';
+    }
+
+    for (const auto& [key, value] : orderedSettingsMap) {
+        std::cout << "[Ordered] Key: " << key << ", Value: " << value << '\n';
     }
 
 };

@@ -11,9 +11,9 @@
                 "-Wextra",
                 "-Wpedantic",
                 "-g",
-                "${workspaceFolder}/cpp/containers/unordered_map/unordered_map.cpp",
+                "${workspaceFolder}/cpp/containers/maps/maps.cpp",
                 "-o",
-                "${workspaceFolder}/cpp/containers/unordered_map/unordered_map.exe"
+                "${workspaceFolder}/cpp/containers/maps/maps.exe"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
